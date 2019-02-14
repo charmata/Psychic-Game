@@ -1,4 +1,4 @@
-var letters = ["a", "b", "c"];
+var letters = "abcdefghijklmnopqrstuvwxyz";
 var guessesLeft = 10;
 var guesses = 0;
 var cpuLetter = "";
@@ -7,7 +7,8 @@ var wins = 0;
 var losses = 0;
 
 function newLetter() {
-  cpuLetter = letters[Math.floor(Math.random() * letters.length)];
+  cpuLetter = letters.charAt(Math.floor(Math.random() * 25));
+  console.log(cpuLetter);
 }
 function newGame() {
   guessesLeft = 10;
