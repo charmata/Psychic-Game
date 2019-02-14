@@ -9,6 +9,13 @@ var losses = 0;
 function newLetter() {
   cpuLetter = letters[Math.floor(Math.random() * letters.length)];
 }
+function newGame() {
+  guessesLeft = 10;
+  document.getElementById("guesses-left").textContent = guessesLeft;
+  guesses = 0;
+  document.getElementById("guesses").textContent = guesses;
+  newLetter();
+}
 
 document.addEventListener("DOMContentLoaded", function(e) {
   document.getElementById("wins").textContent = wins;
@@ -23,11 +30,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     if (userGuess === cpuLetter) {
       wins++;
       document.getElementById("wins").textContent = wins;
-      guessesLeft = 10;
-      document.getElementById("guesses-left").textContent = guessesLeft;
-      guesses = 0;
-      document.getElementById("guesses").textContent = guesses;
-      newLetter();
+      newGame();
     } else if (userGuess !== cpuLetter && guessesLeft !== 0) {
       guessesLeft--;
       document.getElementById("guesses-left").textContent = guessesLeft;
@@ -36,11 +39,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     } else if (userGuess !== cpuLetter && guessesLeft === 0) {
       losses++;
       document.getElementById("losses").textContent = losses;
-      guessesLeft = 10;
-      document.getElementById("guesses-left").textContent = guessesLeft;
-      guesses = 0;
-      document.getElementById("guesses").textContent = guesses;
-      newLetter();
+      newGame();
     }
   };
 });
